@@ -1,0 +1,28 @@
+.chat-input {
+  display: flex;
+  padding: 1rem;
+  background: #fff;
+  border-top: 1px solid #ccc;
+
+  input {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background: #1666c1;
+    }
+  }
+}

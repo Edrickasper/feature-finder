@@ -1,0 +1,54 @@
+<div class="overlay">
+    <div class="popup">
+        <h2>Settings</h2>
+
+        <!-- Verbosity -->
+        <section>
+            <label class="label-title">Verbosity</label>
+            <div class="options">
+                <label><input type="radio" formControlName="verbosity" value="low"> Low</label>
+                <label><input type="radio" formControlName="verbosity" value="medium"> Medium</label>
+                <label><input type="radio" formControlName="verbosity" value="high"> High</label>
+            </div>
+        </section>
+
+        <!-- Temperature -->
+        <section>
+            <label class="label-title">Temperature: {{ settingsForm.value.temperature }}</label>
+            <input type="range" min="0" max="1" step="0.1" formControlName="temperature">
+        </section>
+
+        <!-- Max Tokens -->
+        <section>
+            <label class="label-title">Max Completion Tokens</label>
+            <input type="number" formControlName="maxCompletionTokens" min="1">
+        </section>
+
+        <!-- Reasoning Effort -->
+        <section>
+            <label class="label-title">Reasoning Effort</label>
+            <div class="options">
+                <label><input type="radio" formControlName="reasoningEffort" value="none"> None</label>
+                <label><input type="radio" formControlName="reasoningEffort" value="minimal"> Minimal</label>
+                <label><input type="radio" formControlName="reasoningEffort" value="low"> Low</label>
+                <label><input type="radio" formControlName="reasoningEffort" value="medium"> Medium</label>
+                <label><input type="radio" formControlName="reasoningEffort" value="high"> High</label>
+                <label><input type="radio" formControlName="reasoningEffort" value="xhigh"> X-High</label>
+            </div>
+        </section>
+
+        <!-- Stream -->
+        <section>
+            <label>
+                <input type="checkbox" formControlName="stream">
+                Stream
+            </label>
+        </section>
+
+        <div class="actions">
+            <button (click)="close()">Cancel</button>
+            <button (click)="save()">Save</button>
+        </div>
+
+    </div>
+</div>

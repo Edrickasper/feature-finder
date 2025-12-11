@@ -7,7 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  showSettings = false;
+
+  constructor() { }
   openSettings() {
-    console.log('Settings popup should open');
+    this.showSettings = true;
   }
 }

@@ -1,0 +1,16 @@
+<main class="model-chats">
+    <section *ngFor="let r of responses" class="model-chat">
+        <h2 class="model-title">{{ r.model }}</h2>
+        <div class="messages">
+            <div *ngFor="let m of r.messages" [innerHTML]="markdownToHtml(m.text)"
+                [ngClass]="{'user-message': m.from==='user', 'model-message': m.from==='model'}">
+            </div>
+            <div *ngIf="r.loading" class="loading">Typing...</div>
+        </div>
+    </section>
+</main>
+
+<footer class="chat-input">
+    <input type="text" [(ngModel)]="prompt" (keyup.enter)="sendPrompt()" placeholder="Type your prompt..." />
+    <button (click)="sendPrompt()">Send</button>
+</footer>

@@ -1,0 +1,69 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .popup {
+    width: 380px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+    h2 {
+      margin: 0 0 20px 0;
+    }
+
+    section {
+      margin-bottom: 18px;
+
+      .label-title {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .options {
+        label {
+          display: block;
+          margin-bottom: 4px;
+
+          input {
+            margin-right: 6px;
+          }
+        }
+      }
+
+      input[type="range"],
+      input[type="number"],
+      input[type="checkbox"] {
+        margin-top: 4px;
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+
+      button {
+        padding: 6px 14px;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+
+        &:last-child {
+          background: #007bff;
+        }
+
+        &:first-child {
+          background: #888;
+        }
+      }
+    }
+  }
+}

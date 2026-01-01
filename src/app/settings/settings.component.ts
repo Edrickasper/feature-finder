@@ -1,32 +1,40 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { ApiService } from '../services/api.service';
+import { Config } from '../model/config';
 
 @Component({
   selector: 'app-settings',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
-export class SettingsComponent {
-  settingsForm: FormGroup;
-  @Output() closePopup = new EventEmitter<void>();
-  @Output() saveSettings = new EventEmitter<any>();
+export class SettingsComponent implements OnInit {
+  settingsForm!: FormGroup;
+  private conf!: Config
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private ref: MatDialogRef<SettingsComponent>, private api: ApiService) { }
+
+  ngOnInit() {
+    this.conf = this.api.getConfig();
     this.settingsForm = this.fb.group({
-      verbosity: ['medium'],
-      temperature: [0.5],
-      maxCompletionTokens: [512],
-      reasoningEffort: ['medium'],
-      stream: [false]
+      verbosity: [this.conf.verbosity],
+      temperature: [this.conf.temperature],
+      maxCompletionTokens: [this.conf.maxCompletionTokens],
+      reasoningEffort: [this.conf.reasoningEffort],
+      stream: [this.conf.stream]
     });
+    console.log(this.settingsForm.value);
   }
 
   save() {
-    console.log("Settings:", this.settingsForm.value);
+    this.api.setConfig(this.settingsForm.value);
+    console.log(this.settingsForm.value)
+    this.close();
   }
 
   close() {
-    console.log("Popup closed");
+    this.ref.close();
   }
 }

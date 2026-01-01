@@ -1,21 +1,24 @@
 <div class="overlay">
-    <div class="popup">
-        <h2>Settings</h2>
+    <form class="popup" [formGroup]="settingsForm">
+        <div class="popup-header">
+            <h2>Settings</h2>
+            <button class="close" (click)="close()" aria-label="Close">×</button>
+        </div>
 
         <!-- Verbosity -->
         <section>
             <label class="label-title">Verbosity</label>
             <div class="options">
-                <label><input type="radio" formControlName="verbosity" value="low"> Low</label>
-                <label><input type="radio" formControlName="verbosity" value="medium"> Medium</label>
-                <label><input type="radio" formControlName="verbosity" value="high"> High</label>
+                <label><input type="radio" formControlName="verbosity" name="verbosity" value="low"> Low</label>
+                <label><input type="radio" formControlName="verbosity" name="verbosity" value="medium"> Medium</label>
+                <label><input type="radio" formControlName="verbosity" name="verbosity" value="high"> High</label>
             </div>
         </section>
 
         <!-- Temperature -->
         <section>
             <label class="label-title">Temperature: {{ settingsForm.value.temperature }}</label>
-            <input type="range" min="0" max="1" step="0.1" formControlName="temperature">
+            <input type="range" min="0" max="1" step="0.1" formControlName="temperature" value="0.5">
         </section>
 
         <!-- Max Tokens -->
@@ -28,12 +31,18 @@
         <section>
             <label class="label-title">Reasoning Effort</label>
             <div class="options">
-                <label><input type="radio" formControlName="reasoningEffort" value="none"> None</label>
-                <label><input type="radio" formControlName="reasoningEffort" value="minimal"> Minimal</label>
-                <label><input type="radio" formControlName="reasoningEffort" value="low"> Low</label>
-                <label><input type="radio" formControlName="reasoningEffort" value="medium"> Medium</label>
-                <label><input type="radio" formControlName="reasoningEffort" value="high"> High</label>
-                <label><input type="radio" formControlName="reasoningEffort" value="xhigh"> X-High</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="none">
+                    None</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="minimal">
+                    Minimal</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="low">
+                    Low</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="medium">
+                    Medium</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="high">
+                    High</label>
+                <label><input type="radio" name="reasoningEffort" formControlName="reasoningEffort" value="xhigh">
+                    X-High</label>
             </div>
         </section>
 
@@ -46,9 +55,9 @@
         </section>
 
         <div class="actions">
-            <button (click)="close()">Cancel</button>
-            <button (click)="save()">Save</button>
+            <button class="btn muted" (click)="close()">Cancel</button>
+            <button class="btn primary" (click)="save()">Save</button>
         </div>
 
-    </div>
+    </form>
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HeaderComponent } from "./header/header.component";
 import { ChatComponent } from "./chat/chat.component";
+import { SettingsComponent } from "./settings/settings.component";
 
 @Component({
   selector: 'app-root',

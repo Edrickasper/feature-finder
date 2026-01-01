@@ -4,11 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { marked } from 'marked';
 
 import { ApiService } from '../services/api.service';
-
-export interface Message {
-  from: string,
-  text: string
-}
+import { Message } from '../model/message';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +17,7 @@ export class ChatComponent {
   prompt = '';
   responses: { model: string, messages: Message[], loading: boolean, apiCall: any }[] = [
     { model: 'Deepseek', messages: [], loading: false, apiCall: (p: string) => this.api.deepseek(p) },
-    { model: 'Nova', messages: [], loading: false, apiCall: (p: string) => this.api.nova(p) },
+    { model: 'Mistral', messages: [], loading: false, apiCall: (p: string) => this.api.mistral(p) },
     { model: 'Gemma', messages: [], loading: false, apiCall: (p: string) => this.api.gemma(p) },
   ];
 
